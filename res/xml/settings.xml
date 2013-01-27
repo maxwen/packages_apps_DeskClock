@@ -110,4 +110,14 @@
             android:summary="@string/clock_alarm_color_summary"
             android:defaultValue="@color/clock_gray" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/stopwatch_settings">
+        <CheckBoxPreference
+            android:key="keep_display_on_stopwatch"
+            android:title="@string/keep_display_on_stopwatch"
+            android:summary="@string/keep_display_on_stopwatch_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
 </PreferenceScreen>
