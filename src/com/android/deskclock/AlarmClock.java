@@ -356,8 +356,10 @@ public class AlarmClock extends Activity implements LoaderManager.LoaderCallback
     private void saveRingtoneUri(Intent intent) {
         final Uri uri = intent.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
         mSelectedAlarm.alert = uri;
+        // maxwen: we have now default alarm tone in settings
+        // so dont overwrite this
         // Save the last selected ringtone as the default for new alarms
-        RingtoneManager.setActualDefaultRingtoneUri(this, RingtoneManager.TYPE_ALARM, uri);
+        //RingtoneManager.setActualDefaultRingtoneUri(this, RingtoneManager.TYPE_ALARM, uri);
         asyncUpdateAlarm(mSelectedAlarm, false);
     }
 
