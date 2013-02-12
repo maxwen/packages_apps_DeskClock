@@ -52,10 +52,6 @@ public class SettingsActivity extends PreferenceActivity
             "show_status_bar_icon";
     static final String KEY_ALARM_SNOOZE =
             "snooze_duration";
-    static final String KEY_FLIP_ACTION =
-            "flip_action";
-    static final String KEY_SHAKE_ACTION =
-            "shake_action";
     static final String KEY_VOLUME_BEHAVIOR =
             "volume_button_setting";
     static final String KEY_AUTO_SILENCE =
@@ -193,14 +189,6 @@ public class SettingsActivity extends PreferenceActivity
             update.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             update.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIds);
             getApplicationContext().sendBroadcast(update);
-        } else if (KEY_FLIP_ACTION.equals(pref.getKey())) {
-            final ListPreference listPref = (ListPreference) pref;
-            String action = (String) newValue;
-            updateActionSummary(listPref, action, R.string.flip_action_summary);
-        } else if (KEY_SHAKE_ACTION.equals(pref.getKey())) {
-            final ListPreference listPref = (ListPreference) pref;
-            String action = (String) newValue;
-            updateActionSummary(listPref, action, R.string.shake_action_summary);
         } else if (KEY_SHOW_STATUS_BAR_ICON.equals(pref.getKey())) {
             // Check if any alarms are active. If yes and
             // we allow showing the alarm icon, the icon will be shown.
@@ -217,12 +205,6 @@ public class SettingsActivity extends PreferenceActivity
         } else {
             listPref.setSummary(getString(R.string.auto_silence_summary, i));
         }
-    }
-
-    private void updateActionSummary(ListPreference listPref, String action, int summaryResId) {
-        int i = Integer.parseInt(action);
-        listPref.setSummary(getString(summaryResId,
-            getResources().getStringArray(R.array.action_summary_entries)[i]));
     }
 
     private void refresh() {
@@ -245,14 +227,6 @@ public class SettingsActivity extends PreferenceActivity
 
         listPref = (ListPreference) findPreference(KEY_VOLUME_BUTTONS);
         listPref.setSummary(listPref.getEntry());
-        listPref.setOnPreferenceChangeListener(this);
-
-        listPref = (ListPreference) findPreference(KEY_FLIP_ACTION);
-        updateActionSummary(listPref, listPref.getValue(), R.string.flip_action_summary);
-        listPref.setOnPreferenceChangeListener(this);
-
-        listPref = (ListPreference) findPreference(KEY_SHAKE_ACTION);
-        updateActionSummary(listPref, listPref.getValue(), R.string.shake_action_summary);
         listPref.setOnPreferenceChangeListener(this);
 
         CheckBoxPreference hideStatusbarIcon = (CheckBoxPreference) findPreference(KEY_SHOW_STATUS_BAR_ICON);
