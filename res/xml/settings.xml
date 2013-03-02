@@ -40,7 +40,7 @@
     <PreferenceCategory
         android:title="@string/alarm_settings">
 
-       <ListPreference
+        <ListPreference
             android:key="flip_action"
             android:title="@string/flip_action_title"
             android:dialogTitle="@string/flip_action_dialog_title"

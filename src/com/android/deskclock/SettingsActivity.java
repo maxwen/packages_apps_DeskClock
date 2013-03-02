@@ -240,6 +240,7 @@ public class SettingsActivity extends PreferenceActivity
             getResources().getStringArray(R.array.action_summary_entries)[i]));
     }
 
+
     private void refresh() {
         ListPreference listPref = (ListPreference) findPreference(KEY_AUTO_SILENCE);
         String delay = listPref.getValue();
