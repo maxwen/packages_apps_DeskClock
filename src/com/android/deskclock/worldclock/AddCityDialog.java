@@ -319,6 +319,12 @@ public class AddCityDialog implements OnClickListener,
 
     private void checkSelectionStatus() {
         String name = mCityName.getText().toString().toLowerCase();
+        
+        if (mTimeZones.getSelectedItem()==null){
+            mButton.setEnabled(false);
+            return;
+        }
+        
         String tz = mTimeZones.getSelectedItem().toString();
         boolean enabled =
                 !mLoadingTz &&
