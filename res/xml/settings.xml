@@ -44,16 +44,16 @@
             android:key="flip_action"
             android:title="@string/flip_action_title"
             android:dialogTitle="@string/flip_action_dialog_title"
-            android:entries="@array/volume_button_setting_entries"
-            android:entryValues="@array/volume_button_setting_values"
+            android:entries="@array/flip_action_entries"
+            android:entryValues="@array/flip_action_values"
             android:defaultValue="0" />
 
         <ListPreference
             android:key="shake_action"
-            android:title="@string/shake_action_title"
-            android:dialogTitle="@string/shake_action_dialog_title"
-            android:entries="@array/volume_button_setting_entries"
-            android:entryValues="@array/volume_button_setting_values"
+            android:title="@string/shake_title"
+            android:dialogTitle="@string/shake_dialog"
+            android:entries="@array/flip_action_entries"
+            android:entryValues="@array/flip_action_values"
             android:defaultValue="1"/>
 
         <ListPreference

@@ -193,6 +193,14 @@ public class SettingsActivity extends PreferenceActivity
             final ListPreference listPref = (ListPreference) pref;
             final int idx = listPref.findIndexOfValue((String) newValue);
             listPref.setSummary(listPref.getEntries()[idx]);
+        } else if (KEY_FLIP_ACTION.equals(pref.getKey())) {
+            final ListPreference listPref = (ListPreference) pref;
+            String action = (String) newValue;
+            updateFlipActionSummary(listPref, action);
+        } else if (KEY_SHAKE_ACTION.equals(pref.getKey())) {
+            final ListPreference listPref = (ListPreference) pref;
+            String action = (String) newValue;
+            updateShakeActionSummary(listPref, action);
         } else if (KEY_DIGITAL_CLOCK_TIME_COLOR.equals(pref.getKey())
                 || KEY_DIGITAL_CLOCK_DATE_COLOR.equals(pref.getKey())
                 || KEY_DIGITAL_CLOCK_ALARM_COLOR.equals(pref.getKey())) {
@@ -203,14 +211,6 @@ public class SettingsActivity extends PreferenceActivity
             update.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             update.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIds);
             getApplicationContext().sendBroadcast(update);
-        } else if (KEY_FLIP_ACTION.equals(pref.getKey())) {
-            final ListPreference listPref = (ListPreference) pref;
-            String action = (String) newValue;
-            updateActionSummary(listPref, action, R.string.flip_action_summary);
-        } else if (KEY_SHAKE_ACTION.equals(pref.getKey())) {
-            final ListPreference listPref = (ListPreference) pref;
-            String action = (String) newValue;
-            updateActionSummary(listPref, action, R.string.shake_action_summary);
         } else if (KEY_SHOW_STATUS_BAR_ICON.equals(pref.getKey())) {
             // Check if any alarms are active. If yes and
             // we allow showing the alarm icon, the icon will be shown.
@@ -234,12 +234,18 @@ public class SettingsActivity extends PreferenceActivity
         sendBroadcast(i);
     }
 
-    private void updateActionSummary(ListPreference listPref, String action, int summaryResId) {
+    private void updateFlipActionSummary(ListPreference listPref, String action) {
         int i = Integer.parseInt(action);
-        listPref.setSummary(getString(summaryResId,
-            getResources().getStringArray(R.array.action_summary_entries)[i]));
+        listPref.setSummary(getString(R.string.flip_action_summary,
+            getResources().getStringArray(R.array.flip_action_entries)[i]
+                .toLowerCase()));
     }
 
+    private void updateShakeActionSummary(ListPreference listPref, String action) {
+        int i = Integer.parseInt(action);
+        listPref.setSummary(getString(R.string.shake_summary, getResources()
+            .getStringArray(R.array.flip_action_entries)[i].toLowerCase()));
+    }
 
     private void refresh() {
         ListPreference listPref = (ListPreference) findPreference(KEY_AUTO_SILENCE);
@@ -263,16 +269,17 @@ public class SettingsActivity extends PreferenceActivity
         listPref.setSummary(listPref.getEntry());
         listPref.setOnPreferenceChangeListener(this);
 
+        CheckBoxPreference unlockOnDismiss = (CheckBoxPreference) findPreference(KEY_UNLOCK_ON_DISMISS);
+        unlockOnDismiss.setOnPreferenceChangeListener(this);
         listPref = (ListPreference) findPreference(KEY_FLIP_ACTION);
-        updateActionSummary(listPref, listPref.getValue(), R.string.flip_action_summary);
+        String action = listPref.getValue();
+        updateFlipActionSummary(listPref, action);
         listPref.setOnPreferenceChangeListener(this);
 
         listPref = (ListPreference) findPreference(KEY_SHAKE_ACTION);
-        updateActionSummary(listPref, listPref.getValue(), R.string.shake_action_summary);
+        String shake = listPref.getValue();
+        updateShakeActionSummary(listPref, shake);
         listPref.setOnPreferenceChangeListener(this);
-
-        CheckBoxPreference unlockOnDismiss = (CheckBoxPreference) findPreference(KEY_UNLOCK_ON_DISMISS);
-        unlockOnDismiss.setOnPreferenceChangeListener(this);
 
         CheckBoxPreference hideStatusbarIcon = (CheckBoxPreference) findPreference(KEY_SHOW_STATUS_BAR_ICON);
         hideStatusbarIcon.setOnPreferenceChangeListener(this);

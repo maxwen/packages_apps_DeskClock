@@ -211,6 +211,30 @@
         <item quantity="other">minutes</item>
     </plurals>
 
+    <!-- Setting title for the flip action setting. -->
+    <string name="flip_action_title">Flip action</string>
+
+    <!-- Dialog title of the flip action setting. -->
+    <string name="flip_action_dialog_title">Flip action</string>
+
+    <!-- Setting summary for the flip action setting. -->
+    <string name="flip_action_summary">Flipping the phone down will
+        <xliff:g id="action">%s</xliff:g></string>
+
+    <!-- Entries listed in the setting for the flip action setting. -->
+    <string-array name="flip_action_entries">
+      <item>Do nothing</item>
+      <item>Snooze the alarm</item>
+      <item>Dismiss the alarm</item>
+    </string-array>
+
+    <!-- Values for the flip action setting. -->
+    <string-array name="flip_action_values" translatable="false">
+      <item>0</item>
+      <item>1</item>
+      <item>2</item>
+    </string-array>
+
     <!-- Auto silence preference title -->
     <string name="auto_silence_title">Silence after</string>
 
@@ -386,33 +410,45 @@
     <string name="sw_share_laps">Lap times:</string>
     <!-- Label to enumerate the number of laps in the notification the user has counted -->
     <string name="sw_notification_lap_number">Lap <xliff:g id="number">%d</xliff:g></string>
-    <!-- Formatted stopwatch time
-        [CHAR LIMIT=1] for each abbreviation as in hours_label, etc. -->
-    <string-array name="stopwatch_format_set">
-        <item> <!-- <10 minutes - example "1m 02s.03" -->
-            <xliff:g id="M">%2$d</xliff:g>m
-            <xliff:g id="S">%3$02d</xliff:g>s.<xliff:g id="D">%4$02d</xliff:g>
+
+    <!-- Formatted stopwatch time -->
+    <string-array name="stopwatch_format_set" translatable="false">
+        <item> <!-- <10 minutes - example "1 02.03" -->
+            <xliff:g id="M">%2$d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
         </item>
-        <item> <!-- <1 hour - example "12m 03s.04" -->
-            <xliff:g id="M">%2$02d</xliff:g>m
-            <xliff:g id="S">%3$02d</xliff:g>s.<xliff:g id="D">%4$02d</xliff:g>
+        <item> <!-- <1 hour - example "12 03.04" -->
+            <xliff:g id="M">%2$02d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
         </item>
-        <item> <!-- <10 hours - example "1h 02m 03s.04" -->
-            <xliff:g id="H">%1$d</xliff:g>h
-            <xliff:g id="M">%2$02d</xliff:g>m
-            <xliff:g id="S">%3$02d</xliff:g>s.<xliff:g id="D">%4$02d</xliff:g>
+        <item> <!-- <10 hours - example "1 02 03.04" -->
+            <xliff:g id="H">%1$d</xliff:g> &#x200E;<xliff:g id="M">%2$02d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
         </item>
-        <item> <!-- <100 hours - example "12h 03m 04s.05" -->
-            <xliff:g id="H">%1$02d</xliff:g>h
-            <xliff:g id="M">%2$02d</xliff:g>m
-            <xliff:g id="S">%3$02d</xliff:g>s.<xliff:g id="D">%4$02d</xliff:g>
+        <item> <!-- <100 hours - example "12 03 04.05" -->
+            <xliff:g id="H">%1$02d</xliff:g> &#x200E;<xliff:g id="M">%2$02d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
         </item>
-        <item> <!-- <1000 hours - example "123h 04m 05s.06" -->
-            <xliff:g id="H">%1$03d</xliff:g>h
-            <xliff:g id="M">%2$02d</xliff:g>m
-            <xliff:g id="S">%3$02d</xliff:g>s.<xliff:g id="D">%4$02d</xliff:g>
+        <item> <!-- <1000 hours - example "123 04 05.06" -->
+            <xliff:g id="H">%1$03d</xliff:g> &#x200E;<xliff:g id="M">%2$02d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
         </item>
-        </string-array>
+    </string-array>
+
+    <!-- Formatted stopwatch time for laps shared using the share button -->
+    <string-array name="shared_laps_format_set" translatable="false">
+        <item> <!-- <10 minutes - example "1 02.03" -->
+            <xliff:g id="lap">%6$d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g> &#x200E;<xliff:g id="M">%2$d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
+        </item>
+        <item> <!-- <1 hour - example "12 03.04" -->
+            <xliff:g id="lap">%6$d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g> &#x200E;<xliff:g id="M">%2$02d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
+        </item>
+        <item> <!-- <10 hours - example "1 02 03.04" -->
+            <xliff:g id="lap">%6$d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g> &#x200E;<xliff:g id="H">%1$d</xliff:g> &#x200E;<xliff:g id="M">%2$02d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
+        </item>
+        <item> <!-- <100 hours - example "12 03 04.05" -->
+            <xliff:g id="lap">%6$d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g> &#x200E;<xliff:g id="H">%1$02d</xliff:g> &#x200E;<xliff:g id="M">%2$02d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
+        </item>
+        <item> <!-- <1000 hours - example "123 04 05.06" -->
+            <xliff:g id="lap">%6$d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g> &#x200E;<xliff:g id="H">%1$03d</xliff:g> &#x200E;<xliff:g id="M">%2$02d</xliff:g> &#x200E;<xliff:g id="S">%3$02d</xliff:g><xliff:g id="decimal_separator">%5$c</xliff:g><xliff:g id="D">%4$02d</xliff:g>
+        </item>
+    </string-array>
+
     <!-- Label to enumerate the number of laps the user has counted -->
     <string-array name="sw_lap_number_set" translatable="false">
         <item># <xliff:g id="number">%d</xliff:g></item>
@@ -484,11 +520,6 @@
     <!-- Label for the Cities activity displayed on-screen when that activity must be represented to the user. -->
     <string name="cities_activity_title">Cities</string>
 
-    <!-- Text in a Toggle button indicating an alarm is enabled -->
-    <string name="alarm_on">ON</string>
-    <!-- Text in a Toggle button indicating an alarm is disabled -->
-    <string name="alarm_off">OFF</string>
-
     <!-- Settings strings -->
     <string name="stopwatch_settings">STOPWATCH</string>
     <string name="keep_display_on_stopwatch">Keep the display on</string>
@@ -512,6 +543,12 @@
       <item>analog</item>
       <item>digital</item>
     </string-array>
+
+    <!-- Shake to snooze/dismiss/nothing alarm -->
+    <string name="shake_title">Shake</string>
+    <string name="shake_summary">Shake to
+        <xliff:g id="action">%s</xliff:g></string>
+    <string name="shake_dialog">Shake device to\u2026</string>
 
     <!-- Title for an option that will automtically show a clock representing the user's regular timezone on the main fragment whenever the user leaves their regular timezone-->
     <string name="automatic_home_clock">Automatic home clock</string>
@@ -818,15 +855,6 @@
     <string name="clock_alarm_color_title">Alarm color</string>
     <!-- Label for the digital clock alarm color settings summary -->
     <string name="clock_alarm_color_summary">Set the alarm color of the digital clock.</string>
-
-    <!-- Setting title for the flip action setting. -->
-    <string name="flip_action_title">Flip action</string>
-
-    <!-- Dialog title of the flip action setting. -->
-    <string name="flip_action_dialog_title">Flip device to\u2026</string>
-
-    <!-- Setting summary for the flip action setting. -->
-    <string name="flip_action_summary">Flipping the phone down will <xliff:g id="action">%s</xliff:g></string>
 
     <!-- Setting title for the shake action setting. -->
     <string name="shake_action_title">Shake action</string>

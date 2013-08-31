@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--  Copyright (C) 2007 The Android Open Source Project
+      Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -193,8 +194,6 @@
   </plurals>
     <string name="home_label" msgid="4436139365695453870">"Domicile"</string>
     <string name="cities_activity_title" msgid="8552462751129256730">"Villes"</string>
-    <string name="alarm_on" msgid="4344630320756422804">"OUI"</string>
-    <string name="alarm_off" msgid="6478058633710013612">"NON"</string>
     <string name="clock_settings" msgid="8887845806151785393">"HORLOGE"</string>
     <string name="clock_style" msgid="2265011060429742344">"Style"</string>
   <string-array name="clock_style_entries">
@@ -330,7 +329,5 @@
     <string name="timer_delete_confirmation" msgid="2815524107015816453">"Supprimer ce minuteur ?"</string>
     <string name="city_delete_confirmation" msgid="1783441538785676299">"Supprimer cette ville ?"</string>
     <string name="digital_gadget" msgid="2326954556720571358">"Horloge numérique"</string>
-    <!-- Setting labels on Set alarm screen: Increasing volume on or off -->
     <string name="alarm_increasing_volume">Volume progressif</string>
-
 </resources>

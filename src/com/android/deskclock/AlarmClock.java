@@ -76,7 +76,8 @@ import java.util.UUID;
 public class AlarmClock extends Activity implements LoaderManager.LoaderCallbacks<Cursor>,
         AlarmTimePickerDialogFragment.AlarmTimePickerDialogHandler,
         LabelDialogFragment.AlarmLabelDialogHandler,
-        OnLongClickListener, Callback, DialogInterface.OnClickListener {
+        OnLongClickListener, Callback, DialogInterface.OnClickListener,
+        DialogInterface.OnCancelListener {
 
     private static final String KEY_EXPANDED_IDS = "expandedIds";
     private static final String KEY_REPEAT_CHECKED_IDS = "repeatCheckedIds";
@@ -1337,6 +1338,9 @@ public class AlarmClock extends Activity implements LoaderManager.LoaderCallback
     private void asyncAddAlarm() {
         Alarm a = new Alarm();
         a.alert = RingtoneManager.getActualDefaultRingtoneUri(this, RingtoneManager.TYPE_ALARM);
+        if (a.alert == null) {
+            a.alert = Uri.parse("content://settings/system/alarm_alert");
+        }
         asyncAddAlarm(a, true);
     }
 
@@ -1476,6 +1480,7 @@ public class AlarmClock extends Activity implements LoaderManager.LoaderCallback
         String msg = String.format(res.getQuantityText(R.plurals.alarm_delete_confirmation,
                 mAdapter.getSelectedItemsNum()).toString());
         b.setCancelable(true).setMessage(msg)
+                .setOnCancelListener(this)
                 .setNegativeButton(res.getString(android.R.string.cancel), this)
                 .setPositiveButton(res.getString(android.R.string.ok), this).show();
         mInDeleteConfirmation = true;
@@ -1492,4 +1497,8 @@ public class AlarmClock extends Activity implements LoaderManager.LoaderCallback
         mInDeleteConfirmation = false;
     }
 
+    @Override
+    public void onCancel(DialogInterface dialog) {
+        mInDeleteConfirmation = false;
+    }
 }
